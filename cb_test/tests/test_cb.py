@@ -5,8 +5,10 @@ from odoo.tests.common import SavepointCase
 
 
 class TestCB(SavepointCase):
-    def setUp(self):
-        super().setUp()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        self = cls
         name = 'testing_remote_server'
         self.remote = self.env['res.remote'].search([('name', '=', name)])
         if not self.remote:
